@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Georgelyn LANVEDOU — Portfolio</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:        #f7f4f0;
+    --surface:   #ffffff;
+    --accent1:   #c8d8e8; /* bleu pastel */
+    --accent2:   #d8e8d0; /* vert pastel */
+    --accent3:   #ecddd4; /* pêche pastel */
+    --accent4:   #e8dced; /* lavande pastel */
+    --text:      #1a1a1a;
+    --muted:     #7a7a7a;
+    --border:    #e8e3dd;
+    --tag-bg:    #eeeae5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 5vw;
+    background: rgba(247,244,240,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: .02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: .85rem;
+    font-weight: 400;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .burger span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: .3s; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 5vw 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .55;
+    pointer-events: none;
+  }
+  .blob1 { width: 420px; height: 420px; background: var(--accent1); top: -60px; right: 5%; }
+  .blob2 { width: 300px; height: 300px; background: var(--accent3); bottom: 5%; right: 25%; }
+  .blob3 { width: 200px; height: 200px; background: var(--accent2); top: 40%; left: -4%; }
+
+  .hero-inner {
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-label {
+    display: inline-block;
+    font-size: .75rem;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--tag-bg);
+    padding: .35rem .9rem;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1.05;
+    letter-spacing: -.02em;
+    margin-bottom: 1.4rem;
+  }
+  .hero-name em { font-style: italic; color: var(--muted); }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 540px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .75rem 1.8rem;
+    background: var(--text);
+    color: #fff;
+    font-size: .85rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: opacity .2s;
+  }
+  .btn-primary:hover { opacity: .8; }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .75rem 1.8rem;
+    background: transparent;
+    color: var(--text);
+    font-size: .85rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    transition: background .2s;
+  }
+  .btn-ghost:hover { background: var(--tag-bg); }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 5vw; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .7rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--surface); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 18px;
+    background: var(--accent1);
+    display: block;
+  }
+  .about-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--accent1) 0%, var(--accent3) 100%);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 3rem;
+  }
+  .about-text p { color: var(--muted); margin-bottom: 1.2rem; font-size: .98rem; }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* ── PARCOURS ── */
+  #qualification { background: var(--bg); }
+
+  .parcours-tabs {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    padding: .45rem 1.2rem;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .8rem;
+    font-weight: 400;
+    letter-spacing: .06em;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all .2s;
+    text-transform: uppercase;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--text);
+    color: #fff;
+    border-color: var(--text);
+  }
+
+  .parcours-grid {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.2rem;
+  }
+  .parcours-grid.visible { display: grid; }
+
+  .card {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 1.6rem;
+    border: 1px solid var(--border);
+    transition: transform .2s, box-shadow .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 16px 16px 0 0;
+  }
+  .card-diplome::before { background: var(--accent1); }
+  .card-alternance::before { background: var(--accent2); }
+  .card-stage::before { background: var(--accent3); }
+  .card-pro::before { background: var(--accent4); }
+  .card-benevolat::before { background: linear-gradient(90deg, var(--accent1), var(--accent4)); }
+
+  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.07); }
+
+  .card-period {
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .6rem;
+  }
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    margin-bottom: .3rem;
+    line-height: 1.3;
+  }
+  .card-org {
+    font-size: .82rem;
+    color: var(--muted);
+    margin-bottom: .9rem;
+  }
+  .card-body { font-size: .85rem; color: var(--muted); line-height: 1.65; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .9rem; }
+  .tag {
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .05em;
+    padding: .22rem .65rem;
+    border-radius: 100px;
+    background: var(--tag-bg);
+    color: var(--muted);
+  }
+
+  /* ── COMPÉTENCES ── */
+  #skill { background: var(--surface); }
+  .certif-row {
+    display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem;
+  }
+  .certif-link {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .5rem 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: .8rem;
+    font-weight: 400;
+    letter-spacing: .05em;
+    color: var(--text);
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .certif-link:hover { background: var(--tag-bg); }
+  .certif-link i { font-size: .75rem; color: var(--muted); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+  .skill-card {
+    background: var(--bg);
+    border-radius: 14px;
+    padding: 1.4rem 1.5rem;
+    border: 1px solid var(--border);
+  }
+  .skill-card-title {
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: .8rem;
+  }
+  .skill-card-body { font-size: .84rem; color: var(--muted); line-height: 1.7; }
+
+  /* ── PROJETS ── */
+  #service { background: var(--bg); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .project-card {
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 1.3rem 1.4rem;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    transition: transform .2s, box-shadow .2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .project-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.07); }
+  .project-card-title {
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.35;
+  }
+  .project-card-link {
+    font-size: .75rem;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex; align-items: center; gap: .35rem;
+    text-decoration: none;
+    margin-top: auto;
+  }
+  .project-card-link i { font-size: .65rem; }
+  .project-card-link:hover { color: var(--text); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--surface); }
+  .contact-inner {
+    max-width: 540px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: var(--tag-bg);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text);
+    flex-shrink: 0;
+    font-size: .9rem;
+  }
+  .contact-detail { font-size: .88rem; color: var(--muted); }
+  .contact-detail a { color: var(--text); text-decoration: none; font-weight: 500; }
+  .contact-detail a:hover { text-decoration: underline; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,.5);
+    padding: 2.5rem 5vw;
+    text-align: center;
+    font-size: .8rem;
+  }
+  footer a { color: rgba(255,255,255,.7); text-decoration: none; }
+  .footer-links { display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 1rem; }
+  .footer-social {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.1);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.7);
+    text-decoration: none;
+    transition: background .2s;
+    font-size: .85rem;
+  }
+  .footer-social:hover { background: rgba(255,255,255,.2); }
+
+  /* ── BACK TO TOP ── */
+  .back-top {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    width: 40px; height: 40px;
+    background: var(--text);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    font-size: .8rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+    z-index: 99;
+  }
+  .back-top.show { opacity: 1; pointer-events: all; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 5vw; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; background: rgba(247,244,240,.97);
+      padding: 1.5rem 5vw; gap: 1.2rem; border-bottom: 1px solid var(--border); }
+    .nav-links.open { display: flex; }
+    .burger { display: flex; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-photo-placeholder { aspect-ratio: 3/2; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-label  { animation: fadeUp .6s ease both; }
+  .hero-name   { animation: fadeUp .6s .12s ease both; }
+  .hero-sub    { animation: fadeUp .6s .22s ease both; }
+  .hero-actions{ animation: fadeUp .6s .32s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">Georgelyn LANVEDOU</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Accueil</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#qualification">Parcours</a></li>
+    <li><a href="#skill">Compétences</a></li>
+    <li><a href="#service">Projets</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-blob blob3"></div>
+  <div class="hero-inner">
+    <span class="hero-label">Etudiant en Informatique | Analyste Junior en Cybersécurité | SIEM</span>
+    <h1 class="hero-name">Georgelyn<br><em>LANVEDOU</em></h1>
+    <p class="hero-sub">Technicien Support et Sécurité 
+    </p>
+    <div class="hero-actions">
+      <a href="https://drive.google.com/file/d/1c_kDRsOAV2ap-RXLF0Qa-jYPikf4eZbs/view?usp=sharing" class="btn-primary" target="_blank"><i class="fa fa-download"></i> Mon CV</a>
+      <a href="#contact" class="btn-ghost">Me contacter</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- À PROPOS -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photo-placeholder">
+        <img src="img/STEPHANE.jpg" alt="Photo de Georgelyn" class="about-photo" />
+      </div>
+      <div class="about-text">
+        <p class="section-label">À propos de moi</p>
+        <h2 class="section-title">Etudiant en Sécurité Informatique</h2>
+        <p>Je m’intéresse aux systèmes d’information, aux réseaux et à la cybersécurité.</p>
+        <p>Je développe mes compétences à travers des projets pratiques en administration système, analyse réseau, sécurité des infrastructures et bases de données.</p>
+        <p>Curieux et motivé, je souhaite continuer à apprendre et évoluer dans les domaines de l’informatique, des systèmes et des technologies de l’information..</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PARCOURS -->
+<section id="qualification">
+  <div class="section-inner">
+    <p class="section-label">Mon parcours</p>
+    <h2 class="section-title">Formation &amp; Expériences</h2>
+
+    <div class="parcours-tabs">
+      <button class="tab-btn active" data-tab="diplomes">Diplômes</button>
+      <button class="tab-btn" data-tab="stages">Stages</button>
+      <button class="tab-btn" data-tab="pro">Expérience pro</button>
+    </div>
+
+    <!-- Diplômes -->
+    <div class="parcours-grid visible card-diplome" id="tab-diplomes">
+      <div class="card card-diplome">
+        <p class="card-period">2022-2025</p>
+        <h3 class="card-title">Licence en Sécurité Informatique</h3>
+        <p class="card-org">Institut de Formation et de Recherche en Informatique(IFRI-UAC)· Bénin</p>
+        <div class="card-tags"><span class="tag">Mention Bien</span></div>
+      </div>
+        <div class="card card-diplome">
+        <p class="card-period">2020 — 2023</p>
+        <h3 class="card-title">Baccalauréat Général</h3>
+        <p class="card-org">Complexe Scolaire Sainte Nadine · Bénin</p>
+        <p class="card-body">Série Scientifique D. Mention Assez Bien.</p>
+        <div class="card-tags"><span class="tag">Mention AB</span><span class="tag">Série D</span></div>
+      </div>
+    </div>
+
+
+    <!-- Stages -->
+    <div class="parcours-grid" id="tab-stages">
+      <div class="card card-stage">
+        <p class="card-period">Mai. — Août. 2025</p>
+        <h3 class="card-title">MND- Ministère du Numérique et de la Digitalisation du Bénin</h3>
+        <p class="card-org">Stagiaire Informatique</p>
+        <div class="card-tags" style="margin-bottom:.9rem">
+          <span class="tag">Réseau</span><span class="tag">Suricata</span><span class="tag">Incident</span>
+          <span class="tag">Wireshark</span>
+        </div>
+        <p class="card-body">Pendant 3 mois au sein de la Direction des Systèmes d'Information du MND,
+          différentes tâches m'étaient confiées comme du support, de le déploiement d’une sonde suricata post-firewall pour sécuriser le trafic DMZ, la
+contribution à la documentation technique et au suivi des incidents et l'utilisation de wireshark, Nmap et outils de supervision.</p>
+      </div>
+      <div class="card card-stage">
+        <p class="card-period">août — septembre 2024</p>
+        <h3 class="card-title">Quantum Technology- Bénin</h3>
+        <p class="card-org">Stagiaire en réseau informatique</p>
+        <div class="card-tags" style="margin-bottom:.9rem">
+          <span class="tag">DHCP</span><span class="tag">DNS</span><span class="tag">Cisco</span>
+          <span class="tag">Office 365</span><span class="tag">Réseau</span>
+        </div>
+        <p class="card-body">Pendant 1 mois au sein de Quantum Technology,
+          différentes tâches m'ont été confiées comme l'assistance informatique et maintenance des réseaux informatiques, la mise en place et configuration d’équipements réseaux (Cisco et MikroTik) et le déploiement et sécurisation de services (DHCP, DNS et accès VPN)
+
+        </p>
+      </div>
+    </div>
+
+    <!-- Expérience pro -->
+    <div class="parcours-grid" id="tab-pro">
+      <div class="card card-pro">
+        <p class="card-period">Septembre 2025- Aujourd'hui</p>
+        <h3 class="card-title">GCL Services &amp Fils-Bénin</h3>
+        <p class="card-org">Technicien Support et Sécurité</p>
+        <p class="card-body">Support et maintenance du système informatique de l’entreprise</p>
+<p class="card-body">Gestion et suivi des incidents de sécurité
+</p>
+<p class="card-body">Mise en place et suivi des bonnes pratique de sécurité
+</p>
+
+      </div>
+
+    </div>
+
+
+<hr class="divider">
+
+<!-- COMPÉTENCES -->
+<section id="skill">
+  <div class="section-inner">
+    <h2 class="section-title">Compétences &amp; Certifications</h2>
+
+    <div class="certif-row">
+      <a class="certif-link" href="img/sql.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Base de données avec SQL-OpenClassroom</a>
+      <a class="certif-link" href="img/pythonmain.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Python maintenable-OpenClassroom</a>
+       <a class="certif-link" href="img/sololearn_python.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Python Intermediate- Sololearn</a>
+      <a class="certif-link" href="img/isc2.pdf" target="_blank"><i class="fa fa-file-pdf"></i> Certification Cybersecurity Certified(CC- ISC2)</a>
+       <a class="certif-link" href="img/intrusion.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Test d'Intrusion Web-OpenClassroom</a>
+
+      <a class="certif-link" href="img/jca.pdf" target="_blank"><i class="fa fa-file-pdf"></i> Certification Analyste Junior en Cybersécurité- Cisco NetAcad</a>
+ <a class="certif-link" href="img/rest.pdf" target="_blank"><i class="fa fa-file-pdf"></i>API REST-OpenClassroom</a>
+ <a class="certif-link" href="img/linux.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Initiez vous à linux-OpenClassroom</a>
+
+
+      <a class="certif-link" href="img/sololearn_sql" target="_blank"><i class="fa fa-file-pdf"></i>Introduction To SQL- Sololearn</a>
+      <a class="certif-link" href="img/tpython.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Testez votre Projet Python-OpenClassroom</a>
+       <a class="certif-link" href="img/falgo.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Fonctionnement des Algorithmes-OpenClassroom</a>
+       <a class="certif-link" href="img/Georgelyn.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Introduction To Cybersecurity-Great Learning</a>
+       <a class="certif-link" href="img/intro.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Introducing Computing and IT-Open Learn</a>
+       
+
+    </div>
+  
+        <div class="skill-card">
+        <p class="skill-card-title">Algorithmique, UML, Base de données</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Logique informatique, modélisation système et SQL</span>
+
+        </div>
+      </div>
+      <div class="skill-card">
+        <p class="skill-card-title">Systèmes d'exploitation</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Windows 10 &amp; 11</span>
+          <span class="skill-tag">Windows Server</span>
+          <span class="skill-tag">Linux(Ubuntu,Debian et kali)</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <p class="skill-card-title">Systèmes &amp; Réseaux</p>
+        <div class="skill-tags">
+          <span class="skill-tag">AD DS</span>
+          <span class="skill-tag">DNS</span>
+          <span class="skill-tag">VLAN &amp; Inter-VLAN</span>
+          <span class="skill-tag">VTP</span>
+          <span class="skill-tag">PfSense</span>
+          <span class="skill-tag">OpenVPN</span>
+          <span class="skill-tag">FTP</span>
+          <span class="skill-tag">LAMP</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">GitHub</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <p class="skill-card-title">Cybersécurité</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Suricata IDS/IPS</span>
+          <span class="skill-tag">Wireshark</span>
+          <span class="skill-tag">ELK Stack</span>
+          <span class="skill-tag">Test de pénétration</span>
+          <span class="skill-tag">OSPF</span>
+          <span class="skill-tag">Firewell et Contrôle d'accès</span>
+          <span class="skill-tag">Sensibilisation phishing</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <p class="skill-card-title">Programmation</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Python3</span>
+          <span class="skill-tag">C, C++, Shell</span>
+          <span class="skill-tag">HTML / CSS</span>
+        </div>
+      </div>
+          
+
+      <div class="skill-card">
+        <p class="skill-card-title">Système d'Information</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Compréhension des systèmes d’information</span>
+          <span class="skill-tag">Organisation des données</span>
+          <span class="skill-tag">Notions de gestion des infrastructures IT</span>
+
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <p class="skill-card-title">Outils</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Pack Office 365</span>
+          <span class="skill-tag">VSCode</span>
+          <span class="skill-tag">Cisco Packet Tracer</span>
+          <span class="skill-tag">Gantt Project</span>
+          <span class="skill-tag">Draw.io</span>
+          <span class="skill-tag">GLPI</span>
+          <span class="skill-tag">MailInBlack</span>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+<hr class="divider">
+
+
+<!-- PROJETS -->
+<section id="service">
+    <h2 class="section-title">Mes Projets</h2>
+ <div class="project-card">
+        <p class="project-card-title">Mise en place Serveurs</p>
+        <a class="project-card-link" href="img/BTS2/Serveurs.pdf" target="_blank">Voir<i class="fa fa-arrow-right"></i></a>
+      </div>
+      <div class="project-card">
+        <p class="project-card-title">PfSense</p>
+        <a class="project-card-link" href="img/BTS2/Pfsense.pdf" target="_blank">Voir<i class="fa fa-arrow-right"></i></a>
+      </div>
+      <div class="project-card">
+        <p class="project-card-title">Suricata (IDS/IPS)</p>
+        <a class="project-card-link" href="img/BTS2/IDS-IPS.pdf" target="_blank">Voir<i class="fa fa-arrow-right"></i></a>
+      </div>
+
+      <div class="project-card">
+        <p class="project-card-title">Bonnes Pratiques Cyber</p>
+        <a class="project-card-link" href="img/BTS2/Bonnes_pratiques_cyber.pdf" target="_blank">Voir<i class="fa fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Me joindre</p>
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-inner">
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fa fa-envelope"></i></div>
+        <div class="contact-detail">
+          <div style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">Email</div>
+          <a href="mailto:georgelynstephane01@gmail.com">georgelynstephane01@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+        <div class="contact-detail">
+          <div style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">LinkedIn</div>
+          <a href="https://www.linkedin.com/in/georgelyn-lanvedou/" target="_blank">Georgelyn LANVEDOU</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fab fa-github"></i></div>
+        <div class="contact-detail">
+          <div style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem">GitHub</div>
+          <a href="https://github.com/G3LYN" target="_blank">Georgelyn-LANVEDOU</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links" style="margin-bottom:1rem">
+    <a class="footer-social" href="https://www.linkedin.com/in/georgelyn-lanvedou" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a class="footer-social" href="https://github.com/G3LYNs" target="_blank"><i class="fab fa-github"></i></a>
+  </div>
+  <p>&copy; 2026 Georgelyn LANVEDOU — <a href="#">g-lanvedou.github.io</a></p>
+</footer>
+
+<!-- BACK TO TOP -->
+<a href="#home" class="back-top" id="backTop"><i class="fa fa-arrow-up"></i></a>
+
+<script>
+  // Burger menu
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Back to top
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('show', window.scrollY > 400);
+  });
+
+  // Parcours tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.parcours-grid').forEach(g => g.classList.remove('visible'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('visible');
+    });
+  });
+</script>
+
+</body>
+</html>
