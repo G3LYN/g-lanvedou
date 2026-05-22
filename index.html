@@ -463,6 +463,19 @@
   .hero-name   { animation: fadeUp .6s .12s ease both; }
   .hero-sub    { animation: fadeUp .6s .22s ease both; }
   .hero-actions{ animation: fadeUp .6s .32s ease both; }
+.about-photo {
+  width: 180px;          /* taille réduite */
+  height: 180px;         
+  border-radius: 50%;    /* rend l’image ronde */
+  object-fit: cover;     /* évite que ça soit déformé */
+  border: 4px solid #eee; /* optionnel: joli contour */
+  display: block;
+}
+  .about-photo-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
 </head>
 <body>
