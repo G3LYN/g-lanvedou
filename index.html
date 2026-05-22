@@ -476,6 +476,37 @@
   justify-content: center;
   align-items: center;
 }
+  .certif-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.certif-card {
+  text-decoration: none;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+  color: #000;
+}
+
+.certif-card:hover {
+  transform: translateY(-5px);
+}
+
+.certif-card iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+}
+
+.certif-card p {
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+}
 </style>
 </head>
 <body>
@@ -618,27 +649,59 @@ contribution à la documentation technique et au suivi des incidents et l'utilis
   <div class="section-inner">
     <h2 class="section-title">Compétences &amp; Certifications</h2>
 
-    <div class="certif-row">
-      <a class="certif-link" href="img/sql.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Base de données avec SQL-OpenClassroom</a>
-      <a class="certif-link" href="img/pythonmain.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Python maintenable-OpenClassroom</a>
-       <a class="certif-link" href="img/sololearn_python.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Python Intermediate- Sololearn</a>
-      <a class="certif-link" href="img/pypoo.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Programmation Orientée Objet avec Python-OpenClassroom</a>
-      <a class="certif-link" href="img/isc2.pdf" target="_blank"><i class="fa fa-file-pdf"></i> Certification Cybersecurity Certified(CC- ISC2)</a>
-       <a class="certif-link" href="img/intrusion.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Test d'Intrusion Web-OpenClassroom</a>
+    <div class="certif-grid">
 
-      <a class="certif-link" href="img/jca.pdf" target="_blank"><i class="fa fa-file-pdf"></i> Certification Analyste Junior en Cybersécurité- Cisco NetAcad</a>
- <a class="certif-link" href="img/rest.pdf" target="_blank"><i class="fa fa-file-pdf"></i>API REST-OpenClassroom</a>
- <a class="certif-link" href="img/linux.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Initiez vous à linux-OpenClassroom</a>
+  <a href="img/sql.pdf" target="_blank" class="certif-card">
+    <iframe src="img/sql.pdf"></iframe>
+    <p>Base de données avec SQL - OpenClassroom</p>
+  </a>
 
+  <a href="img/pythonmain.pdf" target="_blank" class="certif-card">
+    <iframe src="img/pythonmain.pdf"></iframe>
+    <p>Python maintenable - OpenClassroom</p>
+  </a>
 
-      <a class="certif-link" href="img/sololearn_sql" target="_blank"><i class="fa fa-file-pdf"></i>Introduction To SQL- Sololearn</a>
-      <a class="certif-link" href="img/tpython.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Testez votre Projet Python-OpenClassroom</a>
-       <a class="certif-link" href="img/falgo.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Fonctionnement des Algorithmes-OpenClassroom</a>
-       <a class="certif-link" href="img/Georgelyn.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Introduction To Cybersecurity-Great Learning</a>
-       <a class="certif-link" href="img/intro.pdf" target="_blank"><i class="fa fa-file-pdf"></i>Introducing Computing and IT-Open Learn</a>
-       
+  <a href="img/sololearn_python.pdf" target="_blank" class="certif-card">
+    <iframe src="img/sololearn_python.pdf"></iframe>
+    <p>Python Intermediate - Sololearn</p>
+  </a>
 
-    </div>
+  <a href="img/pypoo.pdf" target="_blank" class="certif-card">
+    <iframe src="img/pypoo.pdf"></iframe>
+    <p>POO avec Python - OpenClassroom</p>
+  </a>
+
+  <a href="img/isc2.pdf" target="_blank" class="certif-card">
+    <iframe src="img/isc2.pdf"></iframe>
+    <p>Cybersecurity Certified (ISC2)</p>
+  </a>
+
+  <a href="img/intrusion.pdf" target="_blank" class="certif-card">
+    <iframe src="img/intrusion.pdf"></iframe>
+    <p>Test d'intrusion Web</p>
+  </a>
+
+  <a href="img/jca.pdf" target="_blank" class="certif-card">
+    <iframe src="img/jca.pdf"></iframe>
+    <p>Analyste Junior Cybersécurité - Cisco</p>
+  </a>
+
+  <a href="img/rest.pdf" target="_blank" class="certif-card">
+    <iframe src="img/rest.pdf"></iframe>
+    <p>API REST</p>
+  </a>
+
+  <a href="img/linux.pdf" target="_blank" class="certif-card">
+    <iframe src="img/linux.pdf"></iframe>
+    <p>Linux - OpenClassroom</p>
+  </a>
+
+  <a href="img/sololearn_sql.pdf" target="_blank" class="certif-card">
+    <iframe src="img/sololearn_sql.pdf"></iframe>
+    <p>Introduction SQL - Sololearn</p>
+  </a>
+
+</div>
   
         <div class="skill-card">
         <p class="skill-card-title">Algorithmique, UML, Base de données</p>
