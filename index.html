@@ -478,34 +478,68 @@
 }
   .certif-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  padding: 10px;
 }
 
+/* CARD */
 .certif-card {
   text-decoration: none;
-  background: #fff;
-  border-radius: 15px;
+  background: #ffffff;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
-  color: #000;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+  color: #111;
+  display: flex;
+  flex-direction: column;
 }
 
+/* hover smooth */
 .certif-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-.certif-card iframe {
-  width: 100%;
+/* ZONE PREVIEW FIXE */
+.certif-preview {
   height: 200px;
-  border: none;
+  background: #f2f2f2;
+  overflow: hidden;
+  position: relative;
 }
 
+/* PDF UNIFORME */
+.certif-preview iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+
+  /* 🔥 IMPORTANT: rend toutes les previews identiques */
+  transform: scale(0.92);
+  transform-origin: top center;
+
+  pointer-events: none; /* empêche zoom / interaction */
+}
+
+/* TEXTE */
 .certif-card p {
-  padding: 10px;
+  padding: 12px;
   font-size: 14px;
   text-align: center;
+  font-weight: 500;
+}
+
+/* MOBILE OPTIMISÉ */
+@media (max-width: 600px) {
+  .certif-preview {
+    height: 180px;
+  }
+
+  .certif-card p {
+    font-size: 13px;
+  }
 }
 </style>
 </head>
@@ -649,55 +683,75 @@ contribution à la documentation technique et au suivi des incidents et l'utilis
   <div class="section-inner">
     <h2 class="section-title">Compétences &amp; Certifications</h2>
 
-    <div class="certif-grid">
+ <div class="certif-grid">
 
   <a href="img/sql.pdf" target="_blank" class="certif-card">
-    <iframe src="img/sql.pdf"></iframe>
+    <div class="certif-preview">
+      <iframe src="img/sql.pdf"></iframe>
+    </div>
     <p>Base de données avec SQL - OpenClassroom</p>
   </a>
 
   <a href="img/pythonmain.pdf" target="_blank" class="certif-card">
-    <iframe src="img/pythonmain.pdf"></iframe>
+    <div class="certif-preview">
+      <iframe src="img/pythonmain.pdf"></iframe>
+    </div>
     <p>Python maintenable - OpenClassroom</p>
   </a>
 
   <a href="img/sololearn_python.pdf" target="_blank" class="certif-card">
-    <iframe src="img/sololearn_python.pdf"></iframe>
+    <div class="certif-preview">
+      <iframe src="img/sololearn_python.pdf"></iframe>
+    </div>
     <p>Python Intermediate - Sololearn</p>
   </a>
 
   <a href="img/pypoo.pdf" target="_blank" class="certif-card">
-    <iframe src="img/pypoo.pdf"></iframe>
+    <div class="certif-preview">
+      <iframe src="img/pypoo.pdf"></iframe>
+    </div>
     <p>POO avec Python - OpenClassroom</p>
   </a>
 
   <a href="img/isc2.pdf" target="_blank" class="certif-card">
-    <iframe src="img/isc2.pdf"></iframe>
+    <div class="certif-preview">
+      <iframe src="img/isc2.pdf"></iframe>
+    </div>
     <p>Cybersecurity Certified (ISC2)</p>
   </a>
 
   <a href="img/intrusion.pdf" target="_blank" class="certif-card">
-    <iframe src="img/intrusion.pdf"></iframe>
+    <div class="certif-preview">
+      <iframe src="img/intrusion.pdf"></iframe>
+    </div>
     <p>Test d'intrusion Web</p>
   </a>
 
   <a href="img/jca.pdf" target="_blank" class="certif-card">
-    <iframe src="img/jca.pdf"></iframe>
+    <div class="certif-preview">
+      <iframe src="img/jca.pdf"></iframe>
+    </div>
     <p>Analyste Junior Cybersécurité - Cisco</p>
   </a>
 
   <a href="img/rest.pdf" target="_blank" class="certif-card">
-    <iframe src="img/rest.pdf"></iframe>
+    <div class="certif-preview">
+      <iframe src="img/rest.pdf"></iframe>
+    </div>
     <p>API REST</p>
   </a>
 
   <a href="img/linux.pdf" target="_blank" class="certif-card">
-    <iframe src="img/linux.pdf"></iframe>
+    <div class="certif-preview">
+      <iframe src="img/linux.pdf"></iframe>
+    </div>
     <p>Linux - OpenClassroom</p>
   </a>
 
   <a href="img/sololearn_sql.pdf" target="_blank" class="certif-card">
-    <iframe src="img/sololearn_sql.pdf"></iframe>
+    <div class="certif-preview">
+      <iframe src="img/sololearn_sql.pdf"></iframe>
+    </div>
     <p>Introduction SQL - Sololearn</p>
   </a>
 
